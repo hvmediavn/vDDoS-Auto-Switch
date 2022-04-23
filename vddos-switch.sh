@@ -5,20 +5,21 @@
 # vddos-switch your-domain.com [no]
 # ...
 # vddos-switch your-domain.com [high]
+################################################################
 
 
-if [ ! -f /usr/bin/vddos-switch ] || [ ! -f /usr/bin/vddos-autoswitch ]; then
-chmod 700 /vddos/auto-switch/cron.sh
-ln -s /vddos/auto-switch/cron.sh /usr/bin/vddos-autoswitch
-chmod 700 /vddos/auto-switch/vddos-switch.sh
-ln -s /vddos/auto-switch/vddos-switch.sh /usr/bin/vddos-switch
+if [ ! -f /usr/bin/vddos-switch ] || [ ! -f /usr/bin/vddos-autoswitch ] || [ ! -f /usr/bin/vddos-sensor ]; then
+chmod 700 /vddos/auto-switch/*.sh  >/dev/null 2>&1
+ln -s /vddos/auto-switch/vddos-autoswitch.sh /usr/bin/vddos-autoswitch  >/dev/null 2>&1
+ln -s /vddos/auto-switch/vddos-switch.sh /usr/bin/vddos-switch  >/dev/null 2>&1
+ln -s /vddos/auto-switch/vddos-sensor.sh /usr/bin/vddos-sensor  >/dev/null 2>&1
 fi
 
 if [ ! -f /vddos/conf.d/website.conf ]; then
 echo 'ERROR!
 
 /vddos/conf.d/website.conf not found! 
-Please Install vDDoS Proxy Protection!'|tee -a /vddos/auto-switch/log.txt
+Please Install vDDoS Master Server!'|tee -a /vddos/auto-switch/log.txt
 exit 0
 fi
 

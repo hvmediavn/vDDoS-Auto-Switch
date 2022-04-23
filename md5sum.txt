@@ -1,4 +1,8 @@
 1441836bd295837b6ab85238f6aebcea  cron.sh
 6ce6dc5edbcd4254396444fb95825fe6  md5sum.txt
-2d880b901e8090903bfc77c31ac84632  README.md
-be4308b32b27d2fa5aba861ac1539eec  vddos-switch.sh
+aad7494f3f2bdcf8e299653f563eb843  README.md
+bfd39f2f8054a5ddb11daf3a11d8458c  sendmsg.sh
+d179fa40eca4fd5cc387bc775627ac2d  setting.conf
+16927eca4503e03063a9837f500e1c1a  vddos-autoswitch.sh
+516ec651e39c28d4ede1d10ad62224fd  vddos-sensor.sh
+319818ca9cb06efb1e3c62b81e3b5250  vddos-switch.sh

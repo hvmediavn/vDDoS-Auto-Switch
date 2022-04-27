@@ -244,7 +244,7 @@ if [ "$Command" = "checkalldomain" ]; then
 	echo "
 		[[[[[[[ `date` ]]]]]]]
 	" > /vddos/auto-switch/log.txt
-	echo "`cat $listdomains_source | grep .| awk '!x[$0]++'|grep -v '^#'|grep -v '^*'|grep -v '^default' | awk '{print $1" "$2}'| tr : " " |awk '{print $1" "$2"://"$1":"$4"/"}'`" > $listdomains
+	echo "`cat $listdomains_source | grep .| awk '!x[$0]++'|grep -v '^#'|grep -v '^*'|grep -v '^default' | awk '{print $1" "$2}'| tr : " "|tr ] " " |awk '{print $1" "$2"://"$1":"$4"/"}'`" > $listdomains
 
 	/usr/bin/vddos-autoswitch checklist $listdomains $Security_mode
 	rm -f /vddos/auto-switch/vddos-autoswitch.tmp

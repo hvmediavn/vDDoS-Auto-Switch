@@ -1,10 +1,10 @@
 #!/bin/bash
 # echo '* * * * * root /vddos/auto-switch/vddos-sensor.sh' >> /etc/crontab
 
-# if you usually backup on Thursday, you might want to disable cpu, ram... check on Thursday (because it can misrepresent when cpu, network... highload because of backup operation)
+# if you usually backup on Thurvday, you might want to disable cpu, ram... check on Thurvday (because it can misrepresent when cpu, network... highload because of backup operation)
 # today=`date '+%A'`
 # backup_yn=n
-# if [ $today = "Thursday" ]; then
+# if [ $today = "Thurvday" ]; then
 # backup_yn=y
 # fi
 
@@ -156,7 +156,7 @@ return
 BWsar="`sar -n DEV 1 1`"
 NETBW_IN=$(echo "scale=3;(`echo "$BWsar"|grep Average:| grep -v "IFACE"| awk {'print $5'} |tr "\n" "+"`0)"| bc -q| awk '{printf "%.0f\n", $0}')
 NETBW_OUT=$(echo "scale=3;(`echo "$BWsar"|grep Average:| grep -v "IFACE"| awk {'print $6'} |tr "\n" "+"`0)"| bc -q| awk '{printf "%.0f\n", $0}')
-io_raw=`cat  <(cat /sys/block/sda/stat && cat /proc/uptime) <(sleep 1 && cat /sys/block/sda/stat && cat /proc/uptime)`
+io_raw=`cat  <(cat /sys/block/vda/stat && cat /proc/uptime) <(sleep 1 && cat /sys/block/vda/stat && cat /proc/uptime)`
 a1=`echo "$io_raw" | awk 'NR==1 {print $10}'| tr . " "| awk '{printf $1}'`;a2=`echo "$io_raw" | awk 'NR==3 {print $10}'| tr . " "| awk '{printf $1}'`;
 b1=`echo "$io_raw" | awk 'NR==2 {print $1}'| tr . " "| awk '{printf $1}'`;b2=`echo "$io_raw" | awk 'NR==4 {print $1}'| tr . " "| awk '{printf $1}'`;
 IO=$(((a2-a1)/(b2-b1)/10))
@@ -255,7 +255,7 @@ return
 
 if [ "$enable_challenge_yn" = "n" ]; then 
 	vddosreload_yn=n
-	ls -1 /var/log/vddos/|grep -v error.log|grep -v 444.log|grep -v ^access.log|awk '{ print substr( $0, 1, length($0)-11 ) }' > /vddos/auto-switch/status444.tmp
+	ls -1 /var/log/vddos/|grep -v whitelistip.log|grep -v error.log|grep -v 444.log|grep -v ^access.log|awk '{ print substr( $0, 1, length($0)-11 ) }' > /vddos/auto-switch/status444.tmp
 	ten_file_chua_list="/vddos/auto-switch/status444.tmp"
 	so_dong_file_chua_list=`cat $ten_file_chua_list | grep . | wc -l`
 	so_dong_bat_dau_tim=1
